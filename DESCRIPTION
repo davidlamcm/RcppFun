@@ -1,0 +1,11 @@
+Package: RcppFun
+Type: Package
+Title: What the package does (short line)
+Version: 1.0
+Date: 2017-04-21
+Author: David Lam
+Maintainer: David Lam <davidlamcm@gmail.com>
+Description: More about what it does (maybe more than one line)
+License: 
+Imports: Rcpp (>= 0.12.4)
+LinkingTo: Rcpp
