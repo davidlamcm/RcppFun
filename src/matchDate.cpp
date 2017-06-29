@@ -5,7 +5,7 @@ IntegerVector matchDate(IntegerVector refSeries, IntegerVector tsSeries, int val
 int n = refSeries.size();
 int m = tsSeries.size();
 int counter =0 ;
-int lagAdj = 0 ;
+int lagAdj = lag ;
 IntegerVector out(m);
 
 for(int j = 0; j < m; j++) {out[j] = NumericVector::get_na();}
