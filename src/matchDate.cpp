@@ -25,8 +25,8 @@ counter = i;
 if((tsSeries[j] - refSeries[i]) < validDays){
 out[j] = counter +1;
 }
-}else{  
-break;
+}else{ 
+  //break;
 }
 }
 }
