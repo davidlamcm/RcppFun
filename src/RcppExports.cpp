@@ -6,8 +6,8 @@
 using namespace Rcpp;
 
 // matchDate
-IntegerVector matchDate(IntegerVector refSeries, IntegerVector tsSeries, int validDays, int lag);
-RcppExport SEXP RcppFun_matchDate(SEXP refSeriesSEXP, SEXP tsSeriesSEXP, SEXP validDaysSEXP, SEXP lagSEXP) {
+IntegerVector matchDate(IntegerVector refSeries, IntegerVector tsSeries, int validDays, int lag, bool nextIfNotFound);
+RcppExport SEXP _RcppFun_matchDate(SEXP refSeriesSEXP, SEXP tsSeriesSEXP, SEXP validDaysSEXP, SEXP lagSEXP, SEXP nextIfNotFoundSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -15,17 +15,18 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< IntegerVector >::type tsSeries(tsSeriesSEXP);
     Rcpp::traits::input_parameter< int >::type validDays(validDaysSEXP);
     Rcpp::traits::input_parameter< int >::type lag(lagSEXP);
-    rcpp_result_gen = Rcpp::wrap(matchDate(refSeries, tsSeries, validDays, lag));
+    Rcpp::traits::input_parameter< bool >::type nextIfNotFound(nextIfNotFoundSEXP);
+    rcpp_result_gen = Rcpp::wrap(matchDate(refSeries, tsSeries, validDays, lag, nextIfNotFound));
     return rcpp_result_gen;
 END_RCPP
 }
-// rcpp_hello_world
-List rcpp_hello_world();
-RcppExport SEXP RcppFun_rcpp_hello_world() {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpp_hello_world());
-    return rcpp_result_gen;
-END_RCPP
+
+static const R_CallMethodDef CallEntries[] = {
+    {"_RcppFun_matchDate", (DL_FUNC) &_RcppFun_matchDate, 5},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_RcppFun(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
 }
